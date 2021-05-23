@@ -19,12 +19,19 @@
 
 <body>
   <div class="container">
+    <!-- 要素を書き換える -->
     <p id="timer">00:00:00</p>
 
     <div>
       <button id="start_stop" class="btn btn-lg btn-primary">START</button>
     </div>
   </div>
+
+  <!-- JavaScriptのコードをhtmlの中に書きたい場合は、body要素の最後(</body>の手前)か
+  head要素の最後に書くか、別ファイルに記述してリンクさせるかのどちらかをするべきである。 -->
+  <script>
+    document.getElementById('timer').innerHTML = '00:00:01';
+  </script>
 </body>
 
 </html>
