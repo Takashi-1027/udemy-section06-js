@@ -58,34 +58,40 @@
       return value
     }
 
-    var now = new Date(); //Dateオブジェクトを使用して新しいインスタンス(new)を作る操作
-    var seconds = now.getSeconds(); //秒を取得
     /*
-    0秒から9秒までの間だけ
-    ↓ 言い換える
-    secondsが10未満
-    ↓ 言い換えると
-    seconds < 10 
-    ↓ 結果
-    以下の書き方をすればsecondsが10未満まで'0'が付くようにする
+    addEventListenerとはイベントを監視(Listener)するその仕組みを作る(add)という意味になる。
+    EventListenerには2つのパラメーターが必要、その一つ目のパラメータがEventの種類、ここでは'click'にあたる。二つ目が実際に'click'したときに動作するプログラムとなる。ここではfunctionにあたる。
     */
+    document.getElementById('start_stop').addEventListener('click', function () {
+      var now = new Date(); //Dateオブジェクトを使用して新しいインスタンス(new)を作る操作
+      var seconds = now.getSeconds(); //秒を取得
+      /*
+      0秒から9秒までの間だけ
+      ↓ 言い換える
+      secondsが10未満
+      ↓ 言い換えると
+      seconds < 10 
+      ↓ 結果
+      以下の書き方をすればsecondsが10未満まで'0'が付くようにする
+      */
 
-    /*
-    if構文で秒の頭に0を継ぎ足してしたコードが
-    if (seconds < 10) {
-      seconds = '0' + seconds;
-    }
-    下記の一文で表示できるようになった
-    */
-    seconds = addZero(seconds);
+      /*
+      if構文で秒の頭に0を継ぎ足してしたコードが
+      if (seconds < 10) {
+        seconds = '0' + seconds;
+      }
+      下記の一文で表示できるようになった
+      */
+      seconds = addZero(seconds);
 
-    var minutes = now.getMinutes(); //分を表示する
-    minutes = addZero(minutes);
+      var minutes = now.getMinutes(); //分を表示する
+      minutes = addZero(minutes);
 
-    var hours = now.getHours(); //時を表示する
-    hours = addZero(hours);
+      var hours = now.getHours(); //時を表示する
+      hours = addZero(hours);
 
-    document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds;
+      document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds;
+    });
   </script>
 </body>
 
