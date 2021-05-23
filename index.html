@@ -29,8 +29,9 @@
 
   <!-- JavaScriptのコードをhtmlの中に書きたい場合は、body要素の最後(つまり、</body>の手前のこと)か
   head要素の最後に書くか、別ファイルに記述してリンクさせるかのどちらかをするべきである。 -->
-  <script>
-    /*
+
+  <!--
+    document.getElementById('timer').innerHTML = '00:00:01';
     getElementByIdとはId属性をつかってElementをget(取得)する。
     id属性は一つだけつまり唯一性のある要素のこと
     innerHTMLはメソッドではない。
@@ -40,8 +41,13 @@
     ここでは、見た目という意味合いを持つ。そこでプロパティにあたるのがinnerHTMLである。
     メソッドとプロパティを使い分けるのは慣れが必要で、
     動きを表すのがメソッド、見た目を表すのがプロパティである。
-    */
-    document.getElementById('timer').innerHTML = '00:00:01';
+  -->
+  <script>
+    var now = new Date(); //Dateオブジェクトを使用して新しいインスタンス(new)を作る操作
+    var seconds = now.getSeconds(); //秒を取得
+
+    seconds = '0' + seconds; 
+    document.getElementById('timer').innerHTML = seconds;
   </script>
 </body>
 
