@@ -46,10 +46,15 @@
     var now = new Date(); //Dateオブジェクトを使用して新しいインスタンス(new)を作る操作
     var seconds = now.getSeconds(); //秒を取得
 
-    // 0秒から9秒までの間だけ
-    // secondsが10未満と言い換えれる
-    // seconds < 10 となる
-    // 以下の書き方をすればsecondsが10未満まで'0'が付くようにする
+    /*
+    0秒から9秒までの間だけ
+    ↓ 言い換える
+    secondsが10未満
+    ↓ 言い換えると
+    seconds < 10 
+    ↓ 結果
+    以下の書き方をすればsecondsが10未満まで'0'が付くようにする
+    */
     if (seconds < 10) {
       seconds = '0' + seconds;
     }
