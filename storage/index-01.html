@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 下記の記述は、Bootstrap ver.3.0以上のCDNである。 ここから-->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+    integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <!-- ここまで -->
+  <link rel="stylesheet" href="css/style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <!-- 要素を書き換える -->
+    <p id="timer">00:00:00</p>
+
+    <div>
+      <button id="start_stop" class="btn btn-lg btn-primary">START</button>
+    </div>
+  </div>
+
+  <!-- JavaScriptのコードをhtmlの中に書きたい場合は、body要素の最後(つまり、</body>の手前のこと)か
+  head要素の最後に書くか、別ファイルに記述してリンクさせるかのどちらかをするべきである。 -->
+
+  <!--
+    document.getElementById('timer').innerHTML = '00:00:01';
+    getElementByIdとはId属性をつかってElementをget(取得)する。
+    id属性は一つだけつまり唯一性のある要素のこと
+    innerHTMLはメソッドではない。
+    ”要素を書き換える”のはメソッドを使わない、プロパティを使う。
+    オブジェクトの中にはプロパティというのがある。
+    プロパティを直訳すると、性質や性格という意味であるが、
+    ここでは、見た目という意味合いを持つ。そこでプロパティにあたるのがinnerHTMLである。
+    メソッドとプロパティを使い分けるのは慣れが必要で、
+    動きを表すのがメソッド、見た目を表すのがプロパティである。
+  -->
+  <script>
+
+    //0を付け足す（addZero）する関数を使用する
+    var addZero = function (value) {
+      if (value < 10) {
+        value = '0' + value;
+      }
+
+      /*
+      functionを使う場合は return ~~~ を書く必要がある。
+      変数に代入させると変数の中に関数(function)で行った処理の結果を代入することができる。
+      このことを返り血/戻り値という。
+      */
+      return value
+    }
+
+    /*
+    addEventListenerとはイベントを監視(Listener)するその仕組みを作る(add)という意味になる。
+    EventListenerには2つのパラメーターが必要、その一つ目のパラメータがEventの種類、ここでは'click'にあたる。二つ目が実際に'click'したときに動作するプログラムとなる。ここではfunctionにあたる。
+    */
+    document.getElementById('start_stop').addEventListener('click', function () {
+      var now = new Date(); //Dateオブジェクトを使用して新しいインスタンス(new)を作る操作
+      var seconds = now.getSeconds(); //秒を取得
+      /*
+      0秒から9秒までの間だけ
+      ↓ 言い換える
+      secondsが10未満
+      ↓ 言い換えると
+      seconds < 10 
+      ↓ 結果
+      以下の書き方をすればsecondsが10未満まで'0'が付くようにする
+      */
+
+      /*
+      if構文で秒の頭に0を継ぎ足してしたコードが
+      if (seconds < 10) {
+        seconds = '0' + seconds;
+      }
+      下記の一文で表示できるようになった
+      */
+      seconds = addZero(seconds);
+
+      var minutes = now.getMinutes(); //分を表示する
+      minutes = addZero(minutes);
+
+      var hours = now.getHours(); //時を表示する
+      hours = addZero(hours);
+
+      document.getElementById('timer').innerHTML = hours + ':' + minutes + ':' + seconds;
+    });
+  </script>
+</body>
+
+</html>
